@@ -17,13 +17,13 @@ import { delay, takeWhile } from 'rxjs/operators';
 export class EarningPieChartComponent implements AfterViewInit, OnDestroy {
 
   @Output() selectPie = new EventEmitter<{value: number; name: string; color: string}>();
-  @Input() values: {value: number; name: string; }[];
+  @Input() values: {value: number; name: string }[];
   @Input() defaultSelectedCurrency: string;
-
-  private alive = true;
 
   options: any = {};
   echartsInstance;
+
+  private alive = true;
 
   constructor(private theme: NbThemeService) {
   }

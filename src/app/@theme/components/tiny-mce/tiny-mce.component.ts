@@ -20,6 +20,7 @@ export class TinyMCEComponent implements OnDestroy, AfterViewInit {
     tinymce.init({
       target: this.host.nativeElement,
       plugins: ['link', 'paste', 'table'],
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       skin_url: `${this.locationStrategy.getBaseHref()}assets/skins/lightgray`,
       setup: editor => {
         this.editor = editor;

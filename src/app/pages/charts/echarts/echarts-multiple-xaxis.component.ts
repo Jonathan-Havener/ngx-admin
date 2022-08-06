@@ -58,11 +58,9 @@ export class EchartsMultipleXaxisComponent implements AfterViewInit, OnDestroy {
             },
             axisPointer: {
               label: {
-                formatter: params => {
-                  return (
+                formatter: params => (
                     'Precipitation  ' + params.value + (params.seriesData.length ? '：' + params.seriesData[0].data : '')
-                  );
-                },
+                  ),
               },
             },
             data: [
@@ -98,11 +96,9 @@ export class EchartsMultipleXaxisComponent implements AfterViewInit, OnDestroy {
             },
             axisPointer: {
               label: {
-                formatter: params => {
-                  return (
+                formatter: params => (
                     'Precipitation  ' + params.value + (params.seriesData.length ? '：' + params.seriesData[0].data : '')
-                  );
-                },
+                  ),
               },
             },
             data: [

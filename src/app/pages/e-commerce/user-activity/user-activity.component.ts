@@ -11,12 +11,12 @@ import { UserActivityData, UserActive } from '../../../@core/data/user-activity'
 })
 export class ECommerceUserActivityComponent implements OnDestroy {
 
-  private alive = true;
-
   userActivity: UserActive[] = [];
   type = 'month';
   types = ['week', 'month', 'year'];
   currentTheme: string;
+
+  private alive = true;
 
   constructor(private themeService: NbThemeService,
               private userActivityService: UserActivityData) {

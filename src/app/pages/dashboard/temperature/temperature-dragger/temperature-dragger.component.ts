@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @angular-eslint/no-input-rename */
+/* eslint-disable @typescript-eslint/member-ordering */
 import {
   Component,
   HostListener,
@@ -262,13 +265,10 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
   private calculateGradientConePaths(angleStep) {
     const radius = this.radius;
 
-    function calcX(angle) {
-      return radius * (1 - 2 * Math.sin(angle));
-    }
+    const calcX = (angle): number => radius * (1 - 2 * Math.sin(angle));
 
-    function calcY(angle) {
-      return radius * (1 + 2 * Math.cos(angle));
-    }
+    const calcY = (angle): number => radius * (1 + 2 * Math.cos(angle));
+
 
     const gradArray = [];
 
@@ -285,6 +285,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
   private invalidateGradientArcs() {
     const radius = this.radius;
 
+    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function getArc(des) {
       return `M ${radius},${radius}
          L ${des.start.x},${des.start.y}

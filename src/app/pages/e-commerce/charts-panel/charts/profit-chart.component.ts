@@ -17,10 +17,10 @@ export class ProfitChartComponent implements AfterViewInit, OnDestroy, OnChanges
   @Input()
   profitChartData: ProfitChart;
 
-  private alive = true;
-
   echartsIntance: any;
   options: any = {};
+
+  private alive = true;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {
@@ -164,7 +164,7 @@ export class ProfitChartComponent implements AfterViewInit, OnDestroy, OnChanges
     const series = this.getNewSeries(options.series, profitChartData.data);
 
     this.echartsIntance.setOption({
-      series: series,
+      series,
       xAxis: {
         data: this.profitChartData.chartLabel,
       },
@@ -172,12 +172,10 @@ export class ProfitChartComponent implements AfterViewInit, OnDestroy, OnChanges
   }
 
   getNewSeries(series, data: number[][]) {
-    return series.map((line, index) => {
-      return {
+    return series.map((line, index) => ({
         ...line,
         data: data[index],
-      };
-    });
+      }));
   }
 
   onChartInit(echarts) {

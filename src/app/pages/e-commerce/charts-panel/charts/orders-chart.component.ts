@@ -22,16 +22,10 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
   @Input()
   ordersChartData: OrdersChart;
 
-  private alive = true;
-
   echartsIntance: any;
   option: any;
 
-  ngOnChanges(): void {
-    if (this.option) {
-      this.updateOrdersChartOptions(this.ordersChartData);
-    }
-  }
+  private alive = true;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {
@@ -40,6 +34,12 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
         takeWhile(() => this.alive),
       )
       .subscribe(() => this.resizeChart());
+  }
+
+  ngOnChanges(): void {
+    if (this.option) {
+      this.updateOrdersChartOptions(this.ordersChartData);
+    }
   }
 
   ngAfterViewInit(): void {
@@ -82,9 +82,7 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
         backgroundColor: eTheme.tooltipBg,
         borderColor: eTheme.tooltipBorderColor,
         borderWidth: 1,
-        formatter: (params) => {
-          return Math.round(parseInt(params.value, 10));
-        },
+        formatter: (params) => Math.round(parseInt(params.value, 10)),
         extraCssText: eTheme.tooltipExtraCss,
       },
       xAxis: {
@@ -273,12 +271,10 @@ export class OrdersChartComponent implements AfterViewInit, OnDestroy, OnChanges
   }
 
   getNewSeries(series, linesData: number[][]) {
-    return series.map((line, index) => {
-      return {
+    return series.map((line, index) => ({
         ...line,
         data: linesData[index],
-      };
-    });
+      }));
   }
 
   getNewXAxis(xAxis, chartLabel: string[]) {

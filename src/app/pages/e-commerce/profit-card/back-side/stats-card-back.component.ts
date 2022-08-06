@@ -9,9 +9,9 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class StatsCardBackComponent implements OnDestroy {
 
-  private alive = true;
-
   chartData: number[];
+
+  private alive = true;
 
   constructor(private statsBarData: StatsBarData) {
     this.statsBarData.getStatsBarData()

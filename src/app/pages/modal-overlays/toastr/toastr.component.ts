@@ -14,8 +14,6 @@ import {
   templateUrl: './toastr.component.html',
 })
 export class ToastrComponent {
-  constructor(private toastrService: NbToastrService) {}
-
   config: NbToastrConfig;
 
   index = 1;
@@ -53,11 +51,13 @@ export class ToastrComponent {
     { title: null, body: 'Toastr rock!' },
   ];
 
+  constructor(private toastrService: NbToastrService) {}
+
   makeToast() {
     this.showToast(this.status, this.title, this.content);
   }
 
-  openRandomToast () {
+  openRandomToast() {
     const typeIndex = Math.floor(Math.random() * this.types.length);
     const quoteIndex = Math.floor(Math.random() * this.quotes.length);
     const type = this.types[typeIndex];

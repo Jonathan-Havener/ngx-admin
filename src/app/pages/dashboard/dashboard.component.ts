@@ -16,8 +16,6 @@ interface CardSettings {
 })
 export class DashboardComponent implements OnDestroy {
 
-  private alive = true;
-
   solarValue: number;
   lightCard: CardSettings = {
     title: 'Light',
@@ -77,6 +75,8 @@ export class DashboardComponent implements OnDestroy {
     ],
     dark: this.commonStatusCardsSet,
   };
+
+  private alive = true;
 
   constructor(private themeService: NbThemeService,
               private solarService: SolarData) {

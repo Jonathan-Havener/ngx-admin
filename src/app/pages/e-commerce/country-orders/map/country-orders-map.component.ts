@@ -19,6 +19,7 @@ export class CountryOrdersMapComponent implements OnDestroy {
 
   @Input() countryId: string;
 
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() select: EventEmitter<any> = new EventEmitter();
 
   layers = [];
@@ -61,6 +62,10 @@ export class CountryOrdersMapComponent implements OnDestroy {
     setTimeout(() => {
       map.invalidateSize();
     }, 0);
+  }
+
+  ngOnDestroy(): void {
+    this.alive = false;
   }
 
   private createGeoJsonLayer(cords) {
@@ -130,15 +135,9 @@ export class CountryOrdersMapComponent implements OnDestroy {
 
   private findFeatureLayerByCountryId(id) {
     const layers = this.layers[0].getLayers();
-    const featureLayer = layers.find(item => {
-      return item.feature.id === id;
-    });
+    const featureLayer = layers.find(item => item.feature.id === id);
 
     return featureLayer ? featureLayer : null;
-  }
-
-  ngOnDestroy(): void {
-    this.alive = false;
   }
 
 }

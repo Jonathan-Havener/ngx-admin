@@ -10,12 +10,12 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class TrafficRevealCardComponent implements OnDestroy {
 
-  private alive = true;
-
   trafficBarData: TrafficBar;
   trafficListData: TrafficList;
   revealed = false;
-  period: string = 'week';
+  period = 'week';
+
+  private alive = true;
 
   constructor(private trafficListService: TrafficListData,
               private trafficBarService: TrafficBarData) {

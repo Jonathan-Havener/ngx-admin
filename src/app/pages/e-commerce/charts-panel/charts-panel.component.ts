@@ -14,15 +14,16 @@ import { OrderProfitChartSummary, OrdersProfitChartData } from '../../../@core/d
 })
 export class ECommerceChartsPanelComponent implements OnDestroy {
 
-  private alive = true;
+  @ViewChild('ordersChart', { static: true }) ordersChart: OrdersChartComponent;
+  @ViewChild('profitChart', { static: true }) profitChart: ProfitChartComponent;
+
 
   chartPanelSummary: OrderProfitChartSummary[];
-  period: string = 'week';
+  period = 'week';
   ordersChartData: OrdersChart;
   profitChartData: ProfitChart;
 
-  @ViewChild('ordersChart', { static: true }) ordersChart: OrdersChartComponent;
-  @ViewChild('profitChart', { static: true }) profitChart: ProfitChartComponent;
+  private alive = true;
 
   constructor(private ordersProfitChartService: OrdersProfitChartData) {
     this.ordersProfitChartService.getOrderProfitChartSummary()

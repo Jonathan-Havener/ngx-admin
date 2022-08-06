@@ -11,11 +11,11 @@ import { TrafficList } from '../../../../@core/data/traffic-list';
 })
 export class TrafficFrontCardComponent implements OnDestroy {
 
-  private alive = true;
-
   @Input() frontCardData: TrafficList;
 
   currentTheme: string;
+
+  private alive = true;
 
   constructor(private themeService: NbThemeService) {
     this.themeService.getJsTheme()

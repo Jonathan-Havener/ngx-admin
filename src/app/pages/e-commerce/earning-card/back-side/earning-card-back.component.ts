@@ -8,13 +8,14 @@ import { takeWhile } from 'rxjs/operators';
   templateUrl: './earning-card-back.component.html',
 })
 export class EarningCardBackComponent implements OnDestroy {
-  private alive = true;
 
   earningPieChartData: PieChart[];
   name: string;
   color: string;
   value: number;
-  defaultSelectedCurrency: string = 'Bitcoin';
+  defaultSelectedCurrency = 'Bitcoin';
+
+  private alive = true;
 
   constructor(private earningService: EarningData ) {
     this.earningService.getEarningPieChartData()

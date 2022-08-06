@@ -26,10 +26,10 @@ export class CountryOrdersChartComponent implements AfterViewInit, OnDestroy, On
   @Input() maxValue: number;
   @Input() labels: string[];
 
-  private alive = true;
-
   option: any = {};
   echartsInstance;
+
+  private alive = true;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {

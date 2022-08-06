@@ -8,6 +8,7 @@ import { NbThemeService } from '@nebular/theme';
   `,
 })
 export class ChartjsMultipleXaxisComponent implements OnDestroy {
+  // eslint-disable-next-line @typescript-eslint/ban-types
   data: {};
   options: any;
   themeSubscription: any;

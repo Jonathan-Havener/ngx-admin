@@ -11,9 +11,7 @@ import { Subject } from 'rxjs';
 })
 export class RoomSelectorComponent implements OnInit, OnDestroy {
 
-  private destroy$ = new Subject<void>();
-  private hideGrid: boolean;
-
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() select: EventEmitter<number> = new EventEmitter();
 
   selectedRoom = null;
@@ -66,6 +64,9 @@ export class RoomSelectorComponent implements OnInit, OnDestroy {
     ],
   };
 
+  private destroy$ = new Subject<void>();
+  private hideGrid: boolean;
+
   @HostBinding('style.background')
   get background(): 'none' | null {
     return this.hideGrid ? 'none' : null;
@@ -95,18 +96,6 @@ export class RoomSelectorComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  private sortRooms() {
-    this.sortedRooms = this.roomSvg.rooms.slice(0).sort((a, b) => {
-      if (a.id === this.selectedRoom) {
-        return 1;
-      }
-      if (b.id === this.selectedRoom) {
-        return -1;
-      }
-      return 0;
-    });
-  }
-
   selectRoom(roomNumber) {
     this.select.emit(roomNumber);
     this.selectedRoom = roomNumber;
@@ -118,5 +107,17 @@ export class RoomSelectorComponent implements OnInit, OnDestroy {
     const path = this.location.path().replace(/\/$/, '');
 
     return `url(${baseHref}${path}${id})`;
+  }
+
+  private sortRooms() {
+    this.sortedRooms = this.roomSvg.rooms.slice(0).sort((a, b) => {
+      if (a.id === this.selectedRoom) {
+        return 1;
+      }
+      if (b.id === this.selectedRoom) {
+        return -1;
+      }
+      return 0;
+    });
   }
 }

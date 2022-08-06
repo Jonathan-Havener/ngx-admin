@@ -11,10 +11,10 @@ import { Contacts, RecentUsers, UserData } from '../../../@core/data/users';
 })
 export class ContactsComponent implements OnDestroy {
 
-  private alive = true;
-
   contacts: any[];
   recent: any[];
+
+  private alive = true;
 
   constructor(private userService: UserData) {
     forkJoin(

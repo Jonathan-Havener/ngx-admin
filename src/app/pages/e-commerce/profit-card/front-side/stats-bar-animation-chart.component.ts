@@ -15,8 +15,6 @@ import { LayoutService } from '../../../../@core/utils/layout.service';
 })
 export class StatsBarAnimationChartComponent implements AfterViewInit, OnDestroy {
 
-  private alive = true;
-
   @Input() linesData: { firstLine: number[]; secondLine: number[] } = {
     firstLine: [],
     secondLine: [],
@@ -24,6 +22,8 @@ export class StatsBarAnimationChartComponent implements AfterViewInit, OnDestroy
 
   echartsIntance: any;
   options: any = {};
+
+  private alive = true;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {

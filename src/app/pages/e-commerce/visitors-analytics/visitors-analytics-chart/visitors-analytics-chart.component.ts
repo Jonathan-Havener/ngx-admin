@@ -18,8 +18,6 @@ import { OutlineData } from '../../../../@core/data/visitors-analytics';
 })
 export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, OnDestroy {
 
-  private alive = true;
-
   @Input() chartData: {
     innerLine: number[];
     outerLine: OutlineData[];
@@ -28,6 +26,8 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
   option: any;
   themeSubscription: any;
   echartsIntance: any;
+
+  private alive = true;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {
@@ -77,9 +77,7 @@ export class ECommerceVisitorsAnalyticsChartComponent implements AfterViewInit, 
         backgroundColor: eTheme.tooltipBg,
         borderColor: eTheme.tooltipBorderColor,
         borderWidth: 1,
-        formatter: (params) => {
-          return Math.round(parseInt(params[0].value, 10));
-        },
+        formatter: (params) => Math.round(parseInt(params[0].value, 10)),
         extraCssText: eTheme.tooltipExtraCss,
       },
       xAxis: {

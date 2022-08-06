@@ -9,9 +9,9 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class StatsCardFrontComponent {
 
-  private alive = true;
-
   linesData: { firstLine: number[]; secondLine: number[] };
+
+  private alive = true;
 
   constructor(private profitBarAnimationChartService: ProfitBarAnimationChartData) {
     this.profitBarAnimationChartService.getChartData()

@@ -15,12 +15,12 @@ import { LayoutService } from '../../../../@core/utils';
 })
 export class StatsAreaChartComponent implements AfterViewInit, OnDestroy {
 
-  private alive = true;
-
   @Input() points: number[];
 
   echartsIntance: any;
   option: any = {};
+
+  private alive = true;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {

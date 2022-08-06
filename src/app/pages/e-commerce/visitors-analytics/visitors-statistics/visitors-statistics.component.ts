@@ -11,13 +11,13 @@ import { LayoutService } from '../../../../@core/utils/layout.service';
 })
 export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDestroy {
 
-  private alive = true;
-
   @Input() value: number;
 
   option: any = {};
   chartLegend: { iconColor: string; title: string }[];
   echartsIntance: any;
+
+  private alive = true;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {
