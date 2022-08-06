@@ -14,12 +14,13 @@ import { LayoutService } from '../../../../@core/utils/layout.service';
   `,
 })
 export class EarningLiveUpdateChartComponent implements AfterViewInit, OnDestroy, OnChanges {
-  private alive = true;
 
   @Input() liveUpdateChartData: { value: [string, number] }[];
 
   option: any;
   echartsInstance;
+
+  private alive = true;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {

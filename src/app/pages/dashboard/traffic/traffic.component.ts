@@ -23,12 +23,12 @@ import { TrafficChartData } from '../../../@core/data/traffic-chart';
 })
 export class TrafficComponent implements OnDestroy {
 
-  private alive = true;
-
   trafficChartPoints: number[];
   type = 'month';
   types = ['week', 'month', 'year'];
   currentTheme: string;
+
+  private alive = true;
 
   constructor(private themeService: NbThemeService,
               private trafficChartService: TrafficChartData) {

@@ -11,11 +11,11 @@ import { forkJoin } from 'rxjs';
   templateUrl: './visitors-analytics.component.html',
 })
 export class ECommerceVisitorsAnalyticsComponent implements OnDestroy {
-  private alive = true;
-
   pieChartValue: number;
   chartLegend: {iconColor: string; title: string}[];
-  visitorsAnalyticsData: { innerLine: number[]; outerLine: OutlineData[]; };
+  visitorsAnalyticsData: { innerLine: number[]; outerLine: OutlineData[] };
+
+  private alive = true;
 
   constructor(private themeService: NbThemeService,
               private visitorsAnalyticsChartService: VisitorsAnalyticsData) {
@@ -33,8 +33,8 @@ export class ECommerceVisitorsAnalyticsComponent implements OnDestroy {
       .pipe(takeWhile(() => this.alive))
       .subscribe(([innerLine, outerLine, pieChartValue]: [number[], OutlineData[], number]) => {
         this.visitorsAnalyticsData = {
-          innerLine: innerLine,
-          outerLine: outerLine,
+          innerLine,
+          outerLine,
         };
 
         this.pieChartValue = pieChartValue;

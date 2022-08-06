@@ -26,6 +26,21 @@ export class OrdersChartService extends OrdersChartData {
     };
   }
 
+  getDataLabels(nPoints: number, labelsArray: string[]): string[] {
+    const labelsArrayLength = labelsArray.length;
+    const step = Math.round(nPoints / labelsArrayLength);
+
+    return Array.from(Array(nPoints)).map((item, index) => {
+      const dataIndex = Math.round(index / step);
+
+      return index % step === 0 ? labelsArray[dataIndex] : '';
+    });
+  }
+
+  getOrdersChartData(period: string): OrdersChart {
+    return this.data[period];
+  }
+
   private getDataForWeekPeriod(): OrdersChart {
     return {
       chartLabel: this.getDataLabels(42, this.period.getWeeks()),
@@ -136,20 +151,5 @@ export class OrdersChartService extends OrdersChartData {
         ],
       ],
     };
-  }
-
-  getDataLabels(nPoints: number, labelsArray: string[]): string[] {
-    const labelsArrayLength = labelsArray.length;
-    const step = Math.round(nPoints / labelsArrayLength);
-
-    return Array.from(Array(nPoints)).map((item, index) => {
-      const dataIndex = Math.round(index / step);
-
-      return index % step === 0 ? labelsArray[dataIndex] : '';
-    });
-  }
-
-  getOrdersChartData(period: string): OrdersChart {
-    return this.data[period];
   }
 }

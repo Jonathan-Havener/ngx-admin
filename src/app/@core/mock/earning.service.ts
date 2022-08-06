@@ -7,6 +7,7 @@ export class EarningService extends EarningData {
 
   private currentDate: Date = new Date();
   private currentValue = Math.random() * 1000;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   private ONE_DAY = 24 * 3600 * 1000;
 
   private pieChartData = [

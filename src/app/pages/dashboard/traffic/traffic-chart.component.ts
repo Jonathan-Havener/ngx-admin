@@ -15,14 +15,14 @@ import { LayoutService } from '../../../@core/utils';
 })
 export class TrafficChartComponent implements AfterViewInit, OnDestroy {
 
-  private alive = true;
-
   @Input() points: number[];
 
   type = 'month';
   types = ['week', 'month', 'year'];
   option: any = {};
   echartsIntance: any;
+
+  private alive = true;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {

@@ -9,11 +9,11 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class TrafficBackCardComponent implements OnDestroy {
 
-  private alive = true;
-
   @Input() trafficBarData: any;
 
   currentTheme: string;
+
+  private alive = true;
 
   constructor(private themeService: NbThemeService) {
     this.themeService.getJsTheme()

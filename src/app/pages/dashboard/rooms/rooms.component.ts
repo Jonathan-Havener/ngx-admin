@@ -20,8 +20,6 @@ import { map } from 'rxjs/operators';
 export class RoomsComponent implements OnDestroy {
 
   @HostBinding('class.expanded')
-  private expanded: boolean;
-  private selected: number;
 
   isDarkTheme: boolean;
 
@@ -29,6 +27,9 @@ export class RoomsComponent implements OnDestroy {
   breakpoints: any;
   themeSubscription: any;
   themeChangeSubscription: any;
+
+  private expanded: boolean;
+  private selected: number;
 
   constructor(private themeService: NbThemeService,
               private breakpointService: NbMediaBreakpointsService) {
@@ -66,12 +67,14 @@ export class RoomsComponent implements OnDestroy {
     return !this.expanded;
   }
 
-  private isSelected(roomNumber): boolean {
-    return this.selected === roomNumber;
-  }
-
   ngOnDestroy() {
     this.themeSubscription.unsubscribe();
     this.themeChangeSubscription.unsubscribe();
   }
+
+  private isSelected(roomNumber): boolean {
+    return this.selected === roomNumber;
+  }
+
+
 }

@@ -17,20 +17,18 @@ export class ChatComponent {
   }
 
   sendMessage(event: any) {
-    const files = !event.files ? [] : event.files.map((file) => {
-      return {
+    const files = !event.files ? [] : event.files.map((file) => ({
         url: file.src,
         type: file.type,
         icon: 'nb-compose',
-      };
-    });
+      }));
 
     this.messages.push({
       text: event.message,
       date: new Date(),
       reply: true,
       type: files.length ? 'file' : 'text',
-      files: files,
+      files,
       user: {
         name: 'Jonh Doe',
         avatar: 'https://i.gifer.com/no.gif',
@@ -38,7 +36,9 @@ export class ChatComponent {
     });
     const botReply = this.chatService.reply(event.message);
     if (botReply) {
-      setTimeout(() => { this.messages.push(botReply); }, 500);
+      setTimeout(() => {
+ this.messages.push(botReply);
+}, 500);
     }
   }
 }

@@ -24,13 +24,13 @@ import { CountryOrderData } from '../../../@core/data/country-order';
 })
 export class CountryOrdersComponent implements OnInit, OnDestroy {
 
-  private alive = true;
-
   countryName = '';
   countryData: number[] = [];
   countriesCategories: string[];
   breakpoint: NbMediaBreakpoint = { name: '', width: 0 };
   breakpoints: any;
+
+  private alive = true;
 
   constructor(private themeService: NbThemeService,
               private breakpointService: NbMediaBreakpointsService,

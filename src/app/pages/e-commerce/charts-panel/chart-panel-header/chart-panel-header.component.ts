@@ -10,17 +10,17 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class ChartPanelHeaderComponent implements OnDestroy {
 
-  private alive = true;
-
   @Output() periodChange = new EventEmitter<string>();
 
-  @Input() type: string = 'week';
+  @Input() type = 'week';
 
   types: string[] = ['week', 'month', 'year'];
   chartLegend: {iconColor: string; title: string}[];
   breakpoint: NbMediaBreakpoint = { name: '', width: 0 };
   breakpoints: any;
   currentTheme: string;
+
+  private alive = true;
 
   constructor(private themeService: NbThemeService,
               private breakpointService: NbMediaBreakpointsService) {

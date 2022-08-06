@@ -6,10 +6,6 @@ import { OutlineData, VisitorsAnalyticsData } from '../data/visitors-analytics';
 @Injectable()
 export class VisitorsAnalyticsService extends VisitorsAnalyticsData {
 
-  constructor(private periodService: PeriodsService) {
-    super();
-  }
-
   private pieChartValue = 75;
   private innerLinePoints: number[] = [
     94, 188, 225, 244, 253, 254, 249, 235, 208,
@@ -25,6 +21,23 @@ export class VisitorsAnalyticsService extends VisitorsAnalyticsData {
     55, 74, 100 , 131, 159, 180, 193, 199, 200,
     195, 184, 164, 135, 103, 73, 50, 33, 22, 15, 11,
   ];
+
+  constructor(private periodService: PeriodsService) {
+    super();
+  }
+
+  getInnerLineChartData(): Observable<number[]> {
+    return observableOf(this.innerLinePoints);
+  }
+
+  getOutlineLineChartData(): Observable<OutlineData[]> {
+    return observableOf(this.generateOutlineLineData());
+  }
+
+  getPieChartData(): Observable<number> {
+    return observableOf(this.pieChartValue);
+  }
+
   private generateOutlineLineData(): OutlineData[] {
     const months = this.periodService.getMonths();
     const outerLinePointsLength = this.outerLinePoints.length;
@@ -41,17 +54,5 @@ export class VisitorsAnalyticsService extends VisitorsAnalyticsData {
         value: p,
       };
     });
-  }
-
-  getInnerLineChartData(): Observable<number[]> {
-    return observableOf(this.innerLinePoints);
-  }
-
-  getOutlineLineChartData(): Observable<OutlineData[]> {
-    return observableOf(this.generateOutlineLineData());
-  }
-
-  getPieChartData(): Observable<number> {
-    return observableOf(this.pieChartValue);
   }
 }

@@ -9,9 +9,9 @@ import { takeWhile } from 'rxjs/operators';
 })
 export class ECommerceProgressSectionComponent implements OnDestroy {
 
-  private alive = true;
-
   progressInfoData: ProgressInfo[];
+
+  private alive = true;
 
   constructor(private statsProgressBarService: StatsProgressBarData) {
     this.statsProgressBarService.getProgressInfoData()

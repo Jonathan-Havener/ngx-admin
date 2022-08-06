@@ -21,10 +21,10 @@ export class TrafficBarChartComponent implements AfterViewInit, OnDestroy, OnCha
   @Input() labels: string[];
   @Input() formatter: string;
 
-  private alive = true;
-
   option: any = {};
   echartsInstance: any;
+
+  private alive = true;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {

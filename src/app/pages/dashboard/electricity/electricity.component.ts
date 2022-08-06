@@ -12,8 +12,6 @@ import { forkJoin } from 'rxjs';
 })
 export class ElectricityComponent implements OnDestroy {
 
-  private alive = true;
-
   listData: Electricity[];
   chartData: ElectricityChart[];
 
@@ -22,6 +20,8 @@ export class ElectricityComponent implements OnDestroy {
 
   currentTheme: string;
   themeSubscription: any;
+
+  private alive = true;
 
   constructor(private electricityService: ElectricityData,
               private themeService: NbThemeService) {

@@ -9,6 +9,7 @@ import { NbThemeService, NbColorHelper } from '@nebular/theme';
 })
 export class ChartjsRadarComponent implements OnDestroy {
   options: any;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   data: {};
   themeSubscription: any;
 

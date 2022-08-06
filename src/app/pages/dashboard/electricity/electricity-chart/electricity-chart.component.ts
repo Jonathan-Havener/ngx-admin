@@ -18,12 +18,12 @@ import { ElectricityChart } from '../../../../@core/data/electricity';
 })
 export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
 
-  private alive = true;
-
   @Input() data: ElectricityChart[];
 
   option: any;
   echartsIntance: any;
+
+  private alive = true;
 
   constructor(private theme: NbThemeService,
               private layoutService: LayoutService) {

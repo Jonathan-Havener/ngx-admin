@@ -23,9 +23,13 @@ declare const echarts: any;
 })
 export class SolarComponent implements AfterViewInit, OnDestroy {
 
+
+  option: any = {};
+  themeSubscription: any;
+
   private value = 0;
 
-  @Input('chartValue')
+  @Input()
   set chartValue(value: number) {
     this.value = value;
 
@@ -35,9 +39,6 @@ export class SolarComponent implements AfterViewInit, OnDestroy {
       this.option.series[1].data[0].value = value;
     }
   }
-
-  option: any = {};
-  themeSubscription: any;
 
   constructor(private theme: NbThemeService) {
   }

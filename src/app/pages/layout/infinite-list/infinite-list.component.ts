@@ -26,7 +26,9 @@ export class InfiniteListComponent {
   constructor(private newsService: NewsService) {}
 
   loadNext(cardData) {
-    if (cardData.loading) { return; }
+    if (cardData.loading) {
+ return;
+}
 
     cardData.loading = true;
     cardData.placeholders = new Array(this.pageSize);

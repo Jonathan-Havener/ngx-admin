@@ -12,12 +12,12 @@ import { Camera, SecurityCamerasData } from '../../../@core/data/security-camera
 })
 export class SecurityCamerasComponent implements OnInit, OnDestroy {
 
-  private destroy$ = new Subject<void>();
-
   cameras: Camera[];
   selectedCamera: Camera;
   isSingleView = false;
   actionSize: NbComponentSize = 'medium';
+
+  private destroy$ = new Subject<void>();
 
   constructor(
     private themeService: NbThemeService,
